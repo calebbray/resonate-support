@@ -12,7 +12,7 @@ const profileSchema = new Schema({
     required: true
   },
   support_goal: {
-    type: Number,
+    type: String,
     required: true
   },
   pledge_supporters: [
