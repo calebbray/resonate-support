@@ -10,7 +10,7 @@ module.exports = function validateOccurance(data) {
     errors.name = 'Please enter your supporters name';
   }
 
-  if (validator.isEmpty(data.pledge_amount)) {
+  if (validator.isEmpty(data.amount)) {
     errors.amount = 'Support amount is required';
   }
 

@@ -95,8 +95,7 @@ router.post(
           city: req.body.city,
           state: req.body.state
         },
-        pledge_amount: req.body.pledge_amount,
-        date_added: req.body.date_added
+        pledge_amount: req.body.pledge_amount
       };
       profile.pledge_supporters.unshift(newSupporter);
       profile.save().then(profile => res.json(profile));
@@ -108,7 +107,7 @@ router.post(
 // @desc     Add a support occurance to the profile
 // @access   Private
 router.post(
-  '/support_occurence',
+  '/support_occurance',
   passport.authenticate('jwt', { session: false }),
   (req, res) => {
     const { errors, isValid } = validateOccurance(req.body);
@@ -122,7 +121,7 @@ router.post(
         name: req.body.name,
         amount: req.body.amount
       };
-      profile.support_occurences.unshift(newSupport);
+      profile.support_occurrences.unshift(newSupport);
       profile.save().then(profile => res.json(profile));
     });
   }
@@ -139,7 +138,7 @@ router.delete(
       .then(profile => {
         //Get the remove index
         const removeIndex = profile.pledge_supporters
-          .map(item => item.id)
+          .map(item => item._id)
           .indexOf(req.params.ps_id);
         profile.pledge_supporters.splice(removeIndex, 1);
         profile.save().then(profile => res.json(profile));
