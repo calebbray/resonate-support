@@ -4,6 +4,32 @@ import jwt_decode from 'jwt-decode';
 
 import { SET_CURRENT_USER, GET_ERRORS } from './types';
 
+// Register New User
+export const registerUser = (userData, history) => dispatch => {
+  axios
+    .post('/api/users/register', userData)
+    .then(res => history.push('/login'))
+    .catch(err =>
+      dispatch({
+        type: GET_ERRORS,
+        payload: err.response.data
+      })
+    );
+};
+
+// Login User
+export const loginUser = (credentials, history) => dispatch => {
+  axios
+    .post('/api/users/login', credentials)
+    .then(res => history.push('/dashboard'))
+    .catch(err =>
+      dispatch({
+        type: GET_ERRORS,
+        payload: err.response.data
+      })
+    );
+};
+
 // Set Current User
 export const setCurrentUser = decoded => {
   return {

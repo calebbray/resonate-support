@@ -7,10 +7,11 @@ import { setCurrentUser, logoutUser } from './actions/authActions';
 import { Provider } from 'react-redux';
 import store from './store';
 
-import Footer from './components/layout/Footer';
-
 import './App.css';
+
 import Navbar from './components/layout/Navbar';
+import Footer from './components/layout/Footer';
+import Register from './components/auth/Register';
 
 //Check for token
 if (localStorage.jwtToken) {
@@ -35,7 +36,9 @@ class App extends Component {
         <Router>
           <div className="app">
             <Navbar />
-            <h1>Resonate: Support Tracker</h1>
+            <div className="container">
+              <Route exact path="/register" component={Register} />
+            </div>
             <Footer />
           </div>
         </Router>
