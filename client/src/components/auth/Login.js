@@ -67,16 +67,14 @@ class Login extends Component {
                   onChange={this.onChange}
                   error={errors.email}
                 />
-                <div className="form-group">
-                  <input
-                    className="form-control form-control-lg"
-                    type="password"
-                    name="password"
-                    value={this.state.password}
-                    placeholder="Password"
-                    onChange={this.onChange}
-                  />
-                </div>
+                <TextFieldGroup
+                  type="password"
+                  name="password"
+                  placeholder="Password"
+                  value={this.state.password}
+                  onChange={this.onChange}
+                  error={errors.password}
+                />
                 <input
                   type="submit"
                   value="Login"
