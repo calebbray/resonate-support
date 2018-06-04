@@ -44,3 +44,8 @@ export const getMyProfile = () => dispatch => {
 export const profileLoading = () => {
   return { type: PROFILE_LOADING };
 };
+
+// Clear the profile from the store
+export const clearProfile = () => {
+  return { type: CLEAR_CURRENT_PROFILE };
+};

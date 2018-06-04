@@ -3,6 +3,7 @@ import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
 import { getMyProfile } from '../../actions/profileActions';
 import { Link } from 'react-router-dom';
+import Loader from '../common/Loader';
 
 class Dashboard extends Component {
   componentDidMount() {
@@ -12,10 +13,11 @@ class Dashboard extends Component {
   render() {
     const { user } = this.props.auth;
     const { profile, loading } = this.props.profile;
+    const name = user.name.trim().split(' ')[0];
 
     let dashboard;
     if (profile === null || loading === true) {
-      dashboard = <p>Dashboard Loading</p>;
+      dashboard = <Loader />;
     } else {
       if (Object.keys(profile).length > 0) {
         dashboard = <p>This is your profile</p>;
@@ -31,7 +33,7 @@ class Dashboard extends Component {
 
     return (
       <div>
-        <h1>Welcome {user.name}</h1>
+        <h1>Welcome {name}</h1>
         {dashboard}
       </div>
     );

@@ -2,7 +2,7 @@ import axios from 'axios';
 import setAuthToken from '../utils/setAuthToken';
 import jwt_decode from 'jwt-decode';
 
-import { SET_CURRENT_USER, GET_ERRORS } from './types';
+import { SET_CURRENT_USER, SET_ADMIN_USER, GET_ERRORS } from './types';
 
 // Register New User
 export const registerUser = (userData, history) => dispatch => {
@@ -45,6 +45,14 @@ export const setCurrentUser = decoded => {
   return {
     type: SET_CURRENT_USER,
     payload: decoded
+  };
+};
+
+// Set admin User
+export const setAdminUser = user => {
+  return {
+    type: SET_ADMIN_USER,
+    payload: user
   };
 };
 
