@@ -2,7 +2,6 @@ import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import { loginUser } from '../../actions/authActions';
 import TextFieldGroup from '../common/TextFieldGroup';
-import Loader from '../common/Loader';
 
 class Login extends Component {
   constructor(props) {
@@ -38,7 +37,6 @@ class Login extends Component {
 
   onSubmit(e) {
     const { email, password } = this.state;
-    const { user } = this.props.auth;
 
     const credentials = {
       email,
@@ -96,4 +94,7 @@ const mapStateToProps = state => ({
   errors: state.errors
 });
 
-export default connect(mapStateToProps, { loginUser })(Login);
+export default connect(
+  mapStateToProps,
+  { loginUser }
+)(Login);

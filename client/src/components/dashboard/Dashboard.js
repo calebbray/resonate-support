@@ -4,6 +4,7 @@ import { connect } from 'react-redux';
 import { getMyProfile } from '../../actions/profileActions';
 import { Link } from 'react-router-dom';
 import Loader from '../common/Loader';
+import ProfileHeader from './ProfileHeader';
 
 class Dashboard extends Component {
   componentDidMount() {
@@ -20,7 +21,13 @@ class Dashboard extends Component {
       dashboard = <Loader />;
     } else {
       if (Object.keys(profile).length > 0) {
-        dashboard = <p>This is your profile</p>;
+        dashboard = (
+          <div>
+            <p>This is your profile</p>
+            <Link to="/edit-profile">Edit Profile</Link>
+            <ProfileHeader />
+          </div>
+        );
       } else {
         dashboard = (
           <div>
@@ -51,4 +58,7 @@ const mapStateToProps = state => ({
   profile: state.profile
 });
 
-export default connect(mapStateToProps, { getMyProfile })(Dashboard);
+export default connect(
+  mapStateToProps,
+  { getMyProfile }
+)(Dashboard);

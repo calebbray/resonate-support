@@ -4,8 +4,7 @@ import {
   GET_ERRORS,
   GET_PROFILE,
   PROFILE_LOADING,
-  CLEAR_CURRENT_PROFILE,
-  SET_CURRENT_USER
+  CLEAR_CURRENT_PROFILE
 } from './types';
 
 // Creates a profile for a user

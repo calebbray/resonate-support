@@ -1,11 +1,12 @@
 import React, { Component } from 'react';
-import TextFieldGroup from '../../common/TextFieldGroup';
-import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
-import { createProfile } from '../../../actions/profileActions';
+import PropTypes from 'prop-types';
+import { createProfile, getMyProfile } from '../../../actions/profileActions';
 import { withRouter } from 'react-router-dom';
+import isEmpty from '../../../validation/is-empty';
+import TextFieldGroup from '../../common/TextFieldGroup';
 
-class CreateProfile extends Component {
+class EditProfile extends Component {
   constructor(props) {
     super(props);
     this.state = {
@@ -18,42 +19,55 @@ class CreateProfile extends Component {
   }
 
   componentDidMount() {
-    if (!this.props.profile.profile) {
-      this.props.history.push('/dashboard');
-    }
+    this.props.getMyProfile();
   }
 
   componentWillReceiveProps(nextProps) {
     if (nextProps.errors) {
       this.setState({ errors: nextProps.errors });
     }
+
+    if (nextProps.profile.profile) {
+      const profile = nextProps.profile.profile;
+
+      profile.site = !isEmpty(profile.site) ? profile.site : '';
+      profile.support_goal = !isEmpty(profile.support_goal)
+        ? profile.support_goal
+        : '';
+
+      this.setState({
+        site: profile.site,
+        support_goal: profile.support_goal
+      });
+    }
+  }
+
+  onSubmit(e) {
+    const { site, support_goal } = this.state;
+    const updateProfile = {
+      site,
+      support_goal
+    };
+
+    this.props.createProfile(updateProfile, this.props.history);
+    e.preventDefault();
   }
 
   onChange(e) {
     this.setState({ [e.target.name]: e.target.value });
   }
 
-  onSubmit(e) {
-    const { site, support_goal } = this.state;
-    const newProfile = {
-      site,
-      support_goal
-    };
-
-    this.props.createProfile(newProfile, this.props.history);
-    e.preventDefault();
-  }
-
   render() {
     const { errors } = this.state;
+
     return (
-      <div className="create-profile">
+      <div className="edit-profile">
         <div className="container">
           <div className="row">
             <div className="col-md-8 m-auto">
-              <h1 className="display-4 text-center">Create Profile</h1>
+              <h1 className="display-4 text-center">Edit Profile</h1>
               <p className="lead text-center">
-                Enter your site and support raising goal
+                Edit your staff site and support goal
               </p>
               <form noValidate onSubmit={this.onSubmit}>
                 <TextFieldGroup
@@ -86,10 +100,11 @@ class CreateProfile extends Component {
   }
 }
 
-CreateProfile.propTypes = {
+EditProfile.propTypes = {
   profile: PropTypes.object.isRequired,
   errors: PropTypes.object.isRequired,
-  createProfile: PropTypes.func.isRequired
+  createProfile: PropTypes.func.isRequired,
+  getMyProfile: PropTypes.func.isRequired
 };
 
 const mapStateToProps = state => ({
@@ -99,5 +114,5 @@ const mapStateToProps = state => ({
 
 export default connect(
   mapStateToProps,
-  { createProfile }
-)(withRouter(CreateProfile));
+  { createProfile, getMyProfile }
+)(withRouter(EditProfile));
