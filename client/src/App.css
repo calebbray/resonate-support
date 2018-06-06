@@ -1,4 +1,12 @@
+.failing {
+  color: red;
+}
+
 .flexbox {
   display: flex;
   justify-content: space-around;
+}
+
+.passing {
+  color: green;
 }

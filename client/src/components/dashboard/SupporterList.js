@@ -1,9 +1,10 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import Supporter from './Supporter';
-import Link from 'react-router-dom/Link';
 import Modal from 'react-modal';
 import TextFieldGroup from '../common/TextFieldGroup';
+import { addSupporter } from '../../actions/profileActions';
+import isEmpty from '../../validation/is-empty';
 
 Modal.setAppElement(document.getElementById('App'));
 
@@ -24,6 +25,13 @@ class SupporterList extends Component {
       errors: {}
     };
     this.onChange = this.onChange.bind(this);
+    this.closeModal = this.closeModal.bind(this);
+    this.openModal = this.openModal.bind(this);
+    this.onSubmit = this.onSubmit.bind(this);
+  }
+
+  componentWillMount() {
+    Modal.setAppElement(document.getElementById('App'));
   }
 
   openModal() {
@@ -36,6 +44,25 @@ class SupporterList extends Component {
 
   onChange(e) {
     this.setState({ [e.target.name]: e.target.value });
+  }
+
+  onSubmit(e) {
+    const newSupporter = {
+      name: this.state.name,
+      email: this.state.email,
+      phone: this.state.phone,
+      pledge_amount: this.state.pledge_amount,
+      location: {
+        address: this.state.location.address,
+        city: this.state.location.city,
+        state: this.state.location.state
+      }
+    };
+    this.props.addSupporter(newSupporter);
+    if (!isEmpty(this.state.errors)) {
+      this.closeModal();
+    }
+    e.preventDefault();
   }
 
   render() {
@@ -80,9 +107,13 @@ class SupporterList extends Component {
     return (
       <div>
         {supportData}
-        <Modal isOpen={this.state.modalIsOpen}>
-          <h1>This is the modal</h1>
-          <button onClick={this.closeModal.bind(this)}>Close Modal</button>
+        <Modal
+          isOpen={this.state.modalIsOpen}
+          onRequestClose={this.closeModal}
+          ariaHideApp={false}
+        >
+          <h1 className="text-center">Add Supporter</h1>
+
           <form noValidate onSubmit={this.onSubmit}>
             <TextFieldGroup
               name="name"
@@ -91,6 +122,14 @@ class SupporterList extends Component {
               value={this.state.name}
               onChange={this.onChange}
               error={errors.name}
+            />
+            <TextFieldGroup
+              name="pledge_amount"
+              type="text"
+              placeholder="Supporter Pledge Amount"
+              value={this.state.pledge_amount}
+              onChange={this.onChange}
+              error={errors.pledge_amount}
             />
             <TextFieldGroup
               name="email"
@@ -137,10 +176,16 @@ class SupporterList extends Component {
               value="Add Supporter"
               className="btn btn-info btn-block"
             />
+            <button
+              className="btn btn-danger btn-block"
+              onClick={this.closeModal.bind(this)}
+            >
+              Cancel
+            </button>
           </form>
         </Modal>
         <button onClick={this.openModal.bind(this)} className="btn btn-info">
-          Open Modal
+          Add Supporter
         </button>
       </div>
     );
@@ -151,4 +196,7 @@ const mapStateToProps = state => ({
   profile: state.profile
 });
 
-export default connect(mapStateToProps)(SupporterList);
+export default connect(
+  mapStateToProps,
+  { addSupporter }
+)(SupporterList);

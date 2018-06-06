@@ -43,12 +43,20 @@ export const getMyProfile = () => dispatch => {
 export const addSupporter = supporterData => dispatch => {
   axios
     .post('/api/profile/pledge_supporter', supporterData)
-    .then(res =>
+    .then(res => dispatch(getMyProfile()))
+    .catch(err =>
       dispatch({
-        type: GET_PROFILE,
-        payload: res.data
+        type: GET_ERRORS,
+        payload: err.response.data
       })
-    )
+    );
+};
+
+// Add a support occurance to a profile
+export const addSupport = supportData => dispatch => {
+  axios
+    .post('/api/profile/support_occurance', supportData)
+    .then(res => dispatch(getMyProfile()))
     .catch(err =>
       dispatch({
         type: GET_ERRORS,
