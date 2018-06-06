@@ -39,6 +39,24 @@ export const getMyProfile = () => dispatch => {
     );
 };
 
+// Add a Supporter to a profile
+export const addSupporter = supporterData => dispatch => {
+  axios
+    .post('/api/profile/pledge_supporter', supporterData)
+    .then(res =>
+      dispatch({
+        type: GET_PROFILE,
+        payload: res.data
+      })
+    )
+    .catch(err =>
+      dispatch({
+        type: GET_ERRORS,
+        payload: err.response.data
+      })
+    );
+};
+
 // Set the profile state to loading
 export const profileLoading = () => {
   return { type: PROFILE_LOADING };

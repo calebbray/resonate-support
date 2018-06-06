@@ -5,6 +5,8 @@ import { getMyProfile } from '../../actions/profileActions';
 import { Link } from 'react-router-dom';
 import Loader from '../common/Loader';
 import ProfileHeader from './ProfileHeader';
+import SupporterList from './SupporterList';
+import SupportData from './SupportData';
 
 class Dashboard extends Component {
   componentDidMount() {
@@ -23,9 +25,12 @@ class Dashboard extends Component {
       if (Object.keys(profile).length > 0) {
         dashboard = (
           <div>
-            <p>This is your profile</p>
             <Link to="/edit-profile">Edit Profile</Link>
             <ProfileHeader />
+            <div className="flexbox">
+              <SupporterList />
+              <SupportData />
+            </div>
           </div>
         );
       } else {
