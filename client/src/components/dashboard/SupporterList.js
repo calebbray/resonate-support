@@ -74,6 +74,7 @@ class SupporterList extends Component {
         id={supporter._id}
         name={supporter.name}
         amount={supporter.pledge_amount}
+        supporter={supporter}
       />
     ));
 
@@ -91,7 +92,6 @@ class SupporterList extends Component {
               </tr>
             </thead>
             <tbody>{supporters}</tbody>
-            <tr />
           </table>
         </div>
       );
