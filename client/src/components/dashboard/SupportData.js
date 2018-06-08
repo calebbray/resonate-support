@@ -51,6 +51,7 @@ class SupportData extends Component {
 
   render() {
     const { errors } = this.state;
+    const { isAdmin } = this.props.auth.user;
     const {
       pledge_supporters,
       support_goal,
@@ -98,9 +99,11 @@ class SupportData extends Component {
         <p>
           ${supportTotal} out of ${support_goal} raised{' '}
         </p>
-        <button className="btn btn-info" onClick={this.openModal}>
-          Add Support
-        </button>
+        {isAdmin && (
+          <button className="btn btn-info" onClick={this.openModal}>
+            Add Support
+          </button>
+        )}
         <Modal
           isOpen={this.state.isOpen}
           onRequestClose={this.closeModal}
@@ -142,7 +145,8 @@ class SupportData extends Component {
 }
 
 const mapStateToProps = state => ({
-  profile: state.profile
+  profile: state.profile,
+  auth: state.auth
 });
 
 export default connect(

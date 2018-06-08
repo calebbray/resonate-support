@@ -37,6 +37,27 @@ router.get(
   }
 );
 
+// @route    GET api/profile/all
+// @desc     get all profiles
+// @access   Private
+router.get(
+  '/all',
+  passport.authenticate('jwt', { session: false }),
+  (req, res) => {
+    const errors = {};
+    Profile.find()
+      .populate('user', ['name', 'isAdmin'])
+      .then(profiles => {
+        if (!profiles) {
+          errors.noProfiles = 'There are no profiles';
+          res.status(404).json(errors);
+        }
+        res.json(profiles);
+      })
+      .catch(err => res.status(404).json(err));
+  }
+);
+
 // @route    POST api/profile/
 // @desc     Create or edit user profile
 // @access   Private
