@@ -40,6 +40,25 @@ export const getMyProfile = () => dispatch => {
     );
 };
 
+// Get a profile by the user ID
+export const getProfileById = id => dispatch => {
+  dispatch(profileLoading());
+  axios
+    .get(`/api/profile/user/${id}`)
+    .then(res =>
+      dispatch({
+        type: GET_PROFILE,
+        payload: res.data
+      })
+    )
+    .catch(err => {
+      dispatch({
+        type: GET_PROFILE,
+        payload: {}
+      });
+    });
+};
+
 // Get all profiles
 export const getProfiles = () => dispatch => {
   dispatch(profileLoading());

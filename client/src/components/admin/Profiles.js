@@ -24,7 +24,9 @@ class Profiles extends Component {
             <td>{profile.site}</td>
             <td>{profile.support_goal}</td>
             <td>
-              <Link to="">View Profile</Link>
+              <Link to={`/admin/profiles/user/${profile.user._id}`}>
+                View Profile
+              </Link>
             </td>
           </tr>
         ));

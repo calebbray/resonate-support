@@ -22,6 +22,7 @@ import CreateProfile from './components/dashboard/profile-actions/CreateProfile'
 import EditProfile from './components/dashboard/profile-actions/EditProfile';
 import Profiles from './components/admin/Profiles';
 import NotFound from './components/common/NotFound';
+import Profile from './components/admin/profile/Profile';
 
 //Check for token
 if (localStorage.jwtToken) {
@@ -50,6 +51,7 @@ class App extends Component {
             <div className="container">
               <Route exact path="/register" component={Register} />
               <Route exact path="/login" component={Login} />
+              <Route exact path="/not-found" component={NotFound} />
               <Switch>
                 <PrivateRoute exact path="/dashboard" component={Dashboard} />
                 <PrivateRoute
@@ -64,6 +66,11 @@ class App extends Component {
                 />
                 <AdminRoute exact path="/admin" component={NotFound} />
                 <AdminRoute exact path="/admin/profiles" component={Profiles} />
+                <AdminRoute
+                  exact
+                  path="/admin/profiles/user/:id"
+                  component={Profile}
+                />
               </Switch>
             </div>
             <Footer />
