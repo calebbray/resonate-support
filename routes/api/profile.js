@@ -37,6 +37,52 @@ router.get(
   }
 );
 
+// @route    GET api/profile/all
+// @desc     get all profiles
+// @access   Private
+router.get(
+  '/all',
+  passport.authenticate('jwt', { session: false }),
+  (req, res) => {
+    const errors = {};
+    Profile.find()
+      .populate('user', ['name', 'isAdmin'])
+      .then(profiles => {
+        if (!profiles) {
+          errors.noProfiles = 'There are no profiles';
+          res.status(404).json(errors);
+        }
+        res.json(profiles);
+      })
+      .catch(err => res.status(404).json(err));
+  }
+);
+
+// @route    GET api/profile/user/:user_id
+// @desc     get all profiles
+// @access   Private
+router.get(
+  '/user/:user_id',
+  passport.authenticate('jwt', { session: false }),
+  (req, res) => {
+    const errors = {};
+    Profile.findOne({ user: req.params.user_id })
+      .populate('user', ['name'])
+      .then(profile => {
+        if (!profile) {
+          errors.noProfile = 'There is no profile associated with this id';
+          res.status(404).json(errors);
+        }
+        res.json(profile);
+      })
+      .catch(err =>
+        res
+          .status(404)
+          .json({ profile: 'There is no profile associated with this id' })
+      );
+  }
+);
+
 // @route    POST api/profile/
 // @desc     Create or edit user profile
 // @access   Private
@@ -86,6 +132,36 @@ router.post(
     }
 
     Profile.findOne({ user: req.user.id }).then(profile => {
+      const newSupporter = {
+        name: req.body.name,
+        phone: req.body.phone,
+        email: req.body.email,
+        location: {
+          address: req.body.address,
+          city: req.body.city,
+          state: req.body.state
+        },
+        pledge_amount: req.body.pledge_amount
+      };
+      profile.pledge_supporters.unshift(newSupporter);
+      profile.save().then(profile => res.json(profile));
+    });
+  }
+);
+
+// @route    POST api/profile/pledge_supporter/:user_id
+// @desc     Add a pledged supporter to profile identified by the ID
+// @access   Private
+router.post(
+  '/pledge_supporter/:id',
+  passport.authenticate('jwt', { session: false }),
+  (req, res) => {
+    const { errors, isValid } = validateSupporter(req.body);
+
+    if (!isValid) {
+      res.status(400).json(errors);
+    }
+    Profile.findOne({ user: req.params.id }).then(profile => {
       const newSupporter = {
         name: req.body.name,
         phone: req.body.phone,

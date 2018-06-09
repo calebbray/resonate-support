@@ -4,7 +4,8 @@ import {
   GET_ERRORS,
   GET_PROFILE,
   PROFILE_LOADING,
-  CLEAR_CURRENT_PROFILE
+  CLEAR_CURRENT_PROFILE,
+  GET_PROFILES
 } from './types';
 
 // Creates a profile for a user
@@ -35,6 +36,44 @@ export const getMyProfile = () => dispatch => {
       dispatch({
         type: GET_PROFILE,
         payload: {}
+      })
+    );
+};
+
+// Get a profile by the user ID
+export const getProfileById = id => dispatch => {
+  dispatch(profileLoading());
+  axios
+    .get(`/api/profile/user/${id}`)
+    .then(res =>
+      dispatch({
+        type: GET_PROFILE,
+        payload: res.data
+      })
+    )
+    .catch(err => {
+      dispatch({
+        type: GET_PROFILE,
+        payload: {}
+      });
+    });
+};
+
+// Get all profiles
+export const getProfiles = () => dispatch => {
+  dispatch(profileLoading());
+  axios
+    .get('/api/profile/all')
+    .then(res =>
+      dispatch({
+        type: GET_PROFILES,
+        payload: res.data
+      })
+    )
+    .catch(err =>
+      dispatch({
+        type: GET_ERRORS,
+        payload: err.response.data
       })
     );
 };
