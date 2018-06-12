@@ -12,6 +12,7 @@ class Register extends Component {
       email: '',
       password: '',
       password2: '',
+      admin: false,
       errors: {}
     };
     this.onChange = this.onChange.bind(this);
@@ -30,6 +31,10 @@ class Register extends Component {
     }
   }
 
+  onCheck() {
+    this.setState({ admin: !this.state.admin });
+  }
+
   onChange(e) {
     this.setState({ [e.target.name]: e.target.value });
   }
@@ -39,7 +44,8 @@ class Register extends Component {
       name: this.state.name,
       email: this.state.email,
       password: this.state.password,
-      password2: this.state.password2
+      password2: this.state.password2,
+      admin: this.state.admin
     };
 
     this.props.registerUser(newUser, this.props.history);
@@ -89,6 +95,20 @@ class Register extends Component {
                   onChange={this.onChange}
                   error={errors.password2}
                 />
+                <div className="form-check mb-4">
+                  <input
+                    type="checkbox"
+                    className="form-check-input"
+                    name="admin"
+                    value={this.state.admin}
+                    checked={this.state.admin}
+                    onChange={this.onCheck.bind(this)}
+                    id="current"
+                  />
+                  <label htmlFor="admin" className="form-check-label">
+                    This user is an Admin
+                  </label>
+                </div>
                 <input
                   type="submit"
                   value="Register"
@@ -108,4 +128,7 @@ const mapStateToProps = state => ({
   errors: state.errors
 });
 
-export default connect(mapStateToProps, { registerUser })(withRouter(Register));
+export default connect(
+  mapStateToProps,
+  { registerUser }
+)(withRouter(Register));

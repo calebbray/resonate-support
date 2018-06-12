@@ -91,11 +91,37 @@ export const addSupporter = supporterData => dispatch => {
     );
 };
 
+// Add a supporter by user id
+export const addSupporterById = (supporterData, id) => dispatch => {
+  axios
+    .post(`/api/profile/pledge_supporter/${id}`, supporterData)
+    .then(res => dispatch(getProfileById(id)))
+    .catch(err =>
+      dispatch({
+        type: GET_ERRORS,
+        payload: err.response.data
+      })
+    );
+};
+
 // Add a support occurance to a profile
 export const addSupport = supportData => dispatch => {
   axios
     .post('/api/profile/support_occurance', supportData)
     .then(res => dispatch(getMyProfile()))
+    .catch(err =>
+      dispatch({
+        type: GET_ERRORS,
+        payload: err.response.data
+      })
+    );
+};
+
+// Add a support occurance by user id
+export const addSupportById = (supportData, id) => dispatch => {
+  axios
+    .post(`/api/profile/support_occurance/${id}`, supportData)
+    .then(res => dispatch(getProfileById(id)))
     .catch(err =>
       dispatch({
         type: GET_ERRORS,

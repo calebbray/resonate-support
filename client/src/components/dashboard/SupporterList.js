@@ -104,7 +104,6 @@ class SupporterList extends Component {
     }
 
     const { errors } = this.state;
-    const { isAdmin } = this.props.auth.user;
     return (
       <div>
         {supportData}
@@ -185,19 +184,13 @@ class SupporterList extends Component {
             </button>
           </form>
         </Modal>
-        {isAdmin && (
-          <button onClick={this.openModal.bind(this)} className="btn btn-info">
-            Add Supporter
-          </button>
-        )}
       </div>
     );
   }
 }
 
 const mapStateToProps = state => ({
-  profile: state.profile,
-  auth: state.auth
+  profile: state.profile
 });
 
 export default connect(

@@ -179,6 +179,30 @@ router.post(
   }
 );
 
+// @route    POST api/profile/support_occurance/:user_id
+// @desc     Add a pledged supporter to profile identified by the ID
+// @access   Private
+router.post(
+  '/support_occurance/:id',
+  passport.authenticate('jwt', { session: false }),
+  (req, res) => {
+    const { errors, isValid } = validateOccurance(req.body);
+
+    if (!isValid) {
+      res.status(400).json(errors);
+    }
+
+    Profile.findOne({ user: req.params.id }).then(profile => {
+      const newSupport = {
+        name: req.body.name,
+        amount: req.body.amount
+      };
+      profile.support_occurrences.unshift(newSupport);
+      profile.save().then(profile => res.json(profile));
+    });
+  }
+);
+
 // @route    POST api/profile/support_occurance
 // @desc     Add a support occurance to the profile
 // @access   Private

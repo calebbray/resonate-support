@@ -29,14 +29,14 @@ class Profile extends Component {
       profileContent = (
         <div>
           <h1>{profile.user.name}</h1>
-          <ProfileSupporters profile={profile} />
+          <ProfileSupporters />
           <hr />
-          <ProfileSupport profile={profile} />
+          <ProfileSupport />
         </div>
       );
     }
 
-    return <div>{profileContent}</div>;
+    return profileContent;
   }
 }
 

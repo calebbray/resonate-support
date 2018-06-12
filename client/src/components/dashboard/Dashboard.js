@@ -45,7 +45,14 @@ class Dashboard extends Component {
 
     return (
       <div>
-        <h1>Welcome {name}</h1>
+        <div>
+          <h1>Welcome {name}</h1>
+          {user.isAdmin && (
+            <Link className="btn btn-info" to="/admin/profiles">
+              Admin Tools
+            </Link>
+          )}
+        </div>
         {dashboard}
       </div>
     );
