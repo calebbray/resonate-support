@@ -1,4 +1,5 @@
 const mongoose = require('mongoose');
+const moment = require('moment');
 const Schema = mongoose.Schema;
 
 //Create Profile
@@ -43,8 +44,8 @@ const profileSchema = new Schema({
         required: true
       },
       date_added: {
-        type: Date,
-        default: Date.now
+        type: Number,
+        default: moment().valueOf()
       }
     }
   ],
@@ -59,8 +60,8 @@ const profileSchema = new Schema({
         required: true
       },
       date: {
-        type: Date,
-        default: Date.now
+        type: Number,
+        default: moment().valueOf()
       }
     }
   ]

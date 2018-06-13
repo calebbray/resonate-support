@@ -4,6 +4,7 @@ import { addSupportById } from '../../../actions/profileActions';
 import isEmpty from '../../../validation/is-empty';
 import Modal from 'react-modal';
 import TextFieldGroup from '../../common/TextFieldGroup';
+import moment from 'moment';
 
 class ProfileSupport extends Component {
   constructor(props) {
@@ -65,7 +66,7 @@ class ProfileSupport extends Component {
         <tr key={occur._id}>
           <td>{occur.name}</td>
           <td>{occur.amount}</td>
-          <td>{occur.date}</td>
+          <td>{moment(occur.date).format('L')}</td>
         </tr>
       ));
     }
