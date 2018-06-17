@@ -1,4 +1,5 @@
-module.exports = {
-  mongoURI: 'mongodb://caleb:caleb@ds127899.mlab.com:27899/resonate-test-db',
-  secretOrKey: 'secret'
-};
+if (process.env.NODE_ENV === 'production') {
+  module.exports = require('./keys_prod');
+} else {
+  module.exports = require('./keys_dev');
+}

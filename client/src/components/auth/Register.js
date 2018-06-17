@@ -12,7 +12,7 @@ class Register extends Component {
       email: '',
       password: '',
       password2: '',
-      admin: false,
+      isAdmin: false,
       errors: {}
     };
     this.onChange = this.onChange.bind(this);
@@ -32,7 +32,7 @@ class Register extends Component {
   }
 
   onCheck() {
-    this.setState({ admin: !this.state.admin });
+    this.setState({ isAdmin: !this.state.isAdmin });
   }
 
   onChange(e) {
@@ -45,7 +45,7 @@ class Register extends Component {
       email: this.state.email,
       password: this.state.password,
       password2: this.state.password2,
-      admin: this.state.admin
+      isAdmin: this.state.isAdmin
     };
 
     this.props.registerUser(newUser, this.props.history);
@@ -99,9 +99,9 @@ class Register extends Component {
                   <input
                     type="checkbox"
                     className="form-check-input"
-                    name="admin"
-                    value={this.state.admin}
-                    checked={this.state.admin}
+                    name="isAdmin"
+                    value={this.state.isAdmin}
+                    checked={this.state.isAdmin}
                     onChange={this.onCheck.bind(this)}
                     id="current"
                   />

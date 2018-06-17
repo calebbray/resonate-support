@@ -5,21 +5,6 @@ import SupportSummary from './SupportSummary';
 
 class SupportData extends Component {
   render() {
-    const {
-      pledge_supporters,
-      support_goal,
-      support_occurrences
-    } = this.props.profile.profile;
-    let supportTotal = 0;
-
-    pledge_supporters.forEach(supporter => {
-      supportTotal += Number(supporter.pledge_amount);
-    });
-
-    support_occurrences.forEach(support => {
-      supportTotal += Number(support.amount);
-    });
-
     const months = [
       'January',
       'February',
