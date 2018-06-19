@@ -1,3 +1,7 @@
+html {
+  font-family: 'proxima-nova', sans-serif !important;
+}
+
 body {
   margin: 0;
   padding: 0;
