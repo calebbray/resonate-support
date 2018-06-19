@@ -21,7 +21,7 @@ class SupportData extends Component {
     ];
     const supportPeriod = new Date();
     return (
-      <div>
+      <div className="col-2 secondary-content">
         <h2 className="text-center">
           {months[supportPeriod.getMonth()]}, {supportPeriod.getFullYear()}
         </h2>

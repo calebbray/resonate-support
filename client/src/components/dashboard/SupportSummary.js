@@ -7,7 +7,7 @@ import numeral from 'numeral';
 const SupportSummary = ({ supportTotal, profile }) => {
   const { support_goal } = profile.profile;
   return (
-    <div>
+    <div className="support-summary secondary-content">
       <h3
         className={
           supportTotal >= Number(support_goal)
@@ -18,7 +18,7 @@ const SupportSummary = ({ supportTotal, profile }) => {
         {numeral(supportTotal).format('$0,0.00')}
       </h3>
 
-      <p>
+      <p className="text-center">
         {numeral(supportTotal).format('$0,0.00')} out of{' '}
         {numeral(support_goal).format('$0,0.00')} raised{' '}
       </p>

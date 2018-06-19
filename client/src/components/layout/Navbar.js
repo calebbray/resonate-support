@@ -52,7 +52,7 @@ class Navbar extends Component {
     return (
       <div>
         <nav className="navbar navbar-expand-lg navbar-dark bg-primary">
-          <div className="container flex">
+          <div className="container container-header flex">
             <Link className="navbar-brand" to="/">
               <img className="logo" src={logo} alt="logo" />
             </Link>

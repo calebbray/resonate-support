@@ -26,11 +26,11 @@ class Dashboard extends Component {
         dashboard = (
           <div>
             <Link to="/edit-profile">Edit Profile</Link>
-            <ProfileHeader />
             <div className="flexbox">
-              <SupporterList />
+              <ProfileHeader />
               <SupportData />
             </div>
+            <SupporterList />
           </div>
         );
       } else {

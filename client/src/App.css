@@ -16,12 +16,20 @@
   background-color: #333132;
 }
 
+.col-2 {
+  width: 50%;
+  height: 200px;
+}
+
 .container {
-  width: 100%;
   padding-right: 15px;
   padding-left: 15px;
   margin-right: auto;
   margin-left: auto;
+}
+
+.container-header {
+  width: 100%;
 }
 
 .failing {
@@ -34,7 +42,13 @@
 
 .flexbox {
   display: flex;
-  justify-content: space-around;
+  justify-content: space-between;
+  margin-top: 15px;
+}
+
+.form-container {
+  width: 66.67%;
+  margin: auto;
 }
 
 .logo {
@@ -44,6 +58,10 @@
 
 .ml-auto {
   margin-left: auto;
+}
+
+.mt-5 {
+  margin-top: 3rem;
 }
 
 .navbar {
@@ -72,6 +90,27 @@
   font-size: 20px;
 }
 
+.p-4 {
+  padding: 1.5rem;
+}
+
 .passing {
   color: green;
 }
+
+.text-center {
+  text-align: center;
+}
+
+.text-white {
+  color: #fff;
+}
+
+.profile-header {
+  width: 50%;
+  padding: 0;
+}
+
+/* .secondary-content {
+  width: 50%; 
+} */

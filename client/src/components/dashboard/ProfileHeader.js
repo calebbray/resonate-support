@@ -6,8 +6,8 @@ class ProfileHeader extends Component {
   render() {
     const { profile } = this.props.profile;
     return (
-      <div className="profile-header">
-        <div className="container bg-primary">
+      <div className="profile-header bg-primary">
+        <div className="container">
           <div className="row">
             <ul>
               <li>{profile.user.name}</li>
