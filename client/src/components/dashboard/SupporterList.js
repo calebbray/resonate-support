@@ -82,30 +82,28 @@ class SupporterList extends Component {
 
     if (pledge_supporters.length > 0) {
       supportData = (
-        <div>
-          <table>
-            <thead>
-              <tr>
-                <th>Name</th>
-                <th>Support Amount</th>
-                <th />
-              </tr>
-            </thead>
-            <tbody>{supporters}</tbody>
-          </table>
-        </div>
+        <table>
+          <thead>
+            <tr>
+              <th>Name</th>
+              <th>Support Amount</th>
+              <th />
+            </tr>
+          </thead>
+          <tbody>{supporters}</tbody>
+        </table>
       );
     } else {
       supportData = (
         <div>
-          <p>You Have No Supporters :(</p>
+          <p>You Have No Supporters</p>
         </div>
       );
     }
 
     const { errors } = this.state;
     return (
-      <div>
+      <div className="table-container">
         {supportData}
         <Modal
           isOpen={this.state.modalIsOpen}

@@ -59,7 +59,7 @@ class Register extends Component {
       <div className="Register">
         <div className="container">
           <div className="row">
-            <div className="col-md-8 m-auto">
+            <div className="form-container">
               <h1 className="display-4 text-center">Sign Up</h1>
               <p className="lead text-center">Create Your Account</p>
               <form noValidate onSubmit={this.onSubmit}>
@@ -109,11 +109,16 @@ class Register extends Component {
                     This user is an Admin
                   </label>
                 </div>
-                <input
-                  type="submit"
-                  value="Register"
-                  className="btn btn-info btn-block"
-                />
+                <div className="form-group">
+                  {/* <input
+                    type="submit"
+                    value="Register"
+                    className="btn btn-info btn-block"
+                  /> */}
+                  <button type="submit" className="btn btn-info btn-block">
+                    Register
+                  </button>
+                </div>
               </form>
             </div>
           </div>

@@ -53,7 +53,7 @@ class Login extends Component {
       <div className="Login">
         <div className="container">
           <div className="row">
-            <div className="col-md-8 m-auto">
+            <div className="form-container">
               <h1 className="display-4 text-center">Login</h1>
               <p className="lead text-center">
                 Sign in to your support account

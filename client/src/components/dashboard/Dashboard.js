@@ -25,12 +25,11 @@ class Dashboard extends Component {
       if (Object.keys(profile).length > 0) {
         dashboard = (
           <div>
-            <Link to="/edit-profile">Edit Profile</Link>
-            <ProfileHeader />
             <div className="flexbox">
-              <SupporterList />
+              <ProfileHeader />
               <SupportData />
             </div>
+            <SupporterList />
           </div>
         );
       } else {

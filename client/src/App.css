@@ -1,12 +1,197 @@
+.btn {
+  display: inline-block;
+  font-weight: 400;
+  text-align: center;
+  vertical-align: center;
+  text-decoration: none;
+  cursor: pointer;
+}
+
+.btn-info {
+  color: #c2c2c2;
+  background-color: #333132;
+  padding: 0.375rem 0.75rem;
+}
+
+.btn-block {
+  display: block;
+  margin: auto;
+  width: 77%;
+  padding: 10px;
+  margin-top: 15px;
+  font-size: 16px;
+  border-radius: 5px;
+}
+
+.btn-table {
+  display: block;
+  margin: auto;
+  width: 100%;
+  padding: 10px;
+  font-size: 16px;
+  border-radius: 5px;
+}
+
+.btn-warning {
+  background: #73c92d;
+}
+
+.bg-primary {
+  background-color: #333132;
+}
+
+.card {
+  border-radius: 15px;
+}
+
+.col-2 {
+  width: 49.5%;
+  height: 200px;
+}
+
+.container {
+  padding-right: 15px;
+  padding-left: 15px;
+  margin-right: auto;
+  margin-left: auto;
+}
+
+.container-header {
+  width: 100%;
+}
+
 .failing {
   color: red;
 }
 
+.flex {
+  display: flex;
+}
+
 .flexbox {
   display: flex;
-  justify-content: space-around;
+  justify-content: space-between;
+  margin-top: 15px;
+}
+
+.form-check.mb-4 {
+  width: 77%;
+  margin: auto;
+}
+
+.form-container {
+  width: 66.67%;
+  margin: auto;
+}
+
+.form-control {
+  display: block;
+  width: 75%;
+  margin: auto;
+  line-height: 2rem;
+  font-size: 16px;
+  padding-left: 10px;
+  border-radius: 5px;
+  /* background: #f2f2f2; */
+  border: #333132 solid 1px;
+}
+
+.form-group {
+  /* width: 75%;
+  margin: auto; */
+  margin-bottom: 15px;
+}
+
+.invalid-feedback {
+  margin-top: 0px;
+  color: red;
+  width: 77%;
+  margin: 5px auto;
+  font-size: 80%;
+}
+
+.is-invalid {
+  border: solid red 1px;
+}
+
+.logo {
+  max-height: 100px;
+  max-width: 400px;
+}
+
+.ml-auto {
+  margin-left: auto;
+}
+
+.mt-5 {
+  margin-top: 3rem;
+}
+
+.navbar {
+  position: relative;
+  display: flex;
+  align-items: center;
+}
+
+.navbar-brand {
+  display: inline-block;
+  padding-top: 0.3125rem;
+  padding-bottom: 0.3125rem;
+}
+
+.navbar-nav {
+  list-style: none;
+  display: flex;
+  align-items: center;
+}
+
+.nav-link {
+  color: #fff;
+  display: block;
+  padding: 0.5rem 1rem;
+  text-decoration: none;
+  font-size: 20px;
+}
+
+.p-4 {
+  padding: 1.5rem;
 }
 
 .passing {
-  color: green;
+  color: #73c92d;
+}
+
+.profile-header {
+  width: 49.5%;
+  padding: 0;
+}
+
+.profile-info {
+  color: white;
+  list-style: none;
+  display: flex;
+  font-size: 24px;
+  justify-content: space-between;
+  width: 80%;
+}
+
+.table-container {
+  width: 80%;
+  margin: 20px auto;
+}
+
+.text-center {
+  text-align: center;
+}
+
+.text-left {
+  text-align: left;
+}
+
+.text-white {
+  color: #fff;
+}
+
+.secondary-content {
+  background: white;
 }

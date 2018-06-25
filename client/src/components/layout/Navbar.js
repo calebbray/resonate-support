@@ -3,6 +3,8 @@ import { Link } from 'react-router-dom';
 import { connect } from 'react-redux';
 import { logoutUser } from '../../actions/authActions';
 import PropTypes from 'prop-types';
+import logo from './brand-white.png';
+// import logo from './navbar-brand.png';
 
 class Navbar extends Component {
   onLogoutClick(e) {
@@ -50,9 +52,9 @@ class Navbar extends Component {
     return (
       <div>
         <nav className="navbar navbar-expand-lg navbar-dark bg-primary">
-          <div className="container">
+          <div className="container container-header flex">
             <Link className="navbar-brand" to="/">
-              Support Tracker
+              <img className="logo" src={logo} alt="logo" />
             </Link>
             {isAuthenticated ? loggedInLinks : loggedOutLinks}
           </div>
@@ -71,4 +73,7 @@ const mapStateToProps = state => ({
   auth: state.auth
 });
 
-export default connect(mapStateToProps, { logoutUser })(Navbar);
+export default connect(
+  mapStateToProps,
+  { logoutUser }
+)(Navbar);

@@ -47,9 +47,9 @@ class Supporter extends Component {
     return (
       <tr>
         <td>{supporter.name}</td>
-        <td className="text-center">{supporter.pledge_amount}</td>
+        <td>{supporter.pledge_amount}</td>
         <td>
-          <button onClick={this.openModal} className="btn btn-warning">
+          <button onClick={this.openModal} className="btn btn-info btn-table">
             View
           </button>
           <Modal
