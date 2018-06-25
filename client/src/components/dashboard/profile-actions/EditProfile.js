@@ -64,7 +64,7 @@ class EditProfile extends Component {
       <div className="edit-profile">
         <div className="container">
           <div className="row">
-            <div className="col-md-8 m-auto">
+            <div className="form-container">
               <h1 className="display-4 text-center">Edit Profile</h1>
               <p className="lead text-center">
                 Edit your staff site and support goal

@@ -25,7 +25,6 @@ class Dashboard extends Component {
       if (Object.keys(profile).length > 0) {
         dashboard = (
           <div>
-            <Link to="/edit-profile">Edit Profile</Link>
             <div className="flexbox">
               <ProfileHeader />
               <SupportData />

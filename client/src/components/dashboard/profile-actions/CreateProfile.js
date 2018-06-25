@@ -50,7 +50,7 @@ class CreateProfile extends Component {
       <div className="create-profile">
         <div className="container">
           <div className="row">
-            <div className="col-md-8 m-auto">
+            <div className="form-container">
               <h1 className="display-4 text-center">Create Profile</h1>
               <p className="lead text-center">
                 Enter your site and support raising goal
