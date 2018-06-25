@@ -8,3 +8,30 @@ body {
   font-family: sans-serif;
   background: #f2f2f2;
 }
+
+table {
+  width: 100%;
+  border: 1px solid #ddd;
+  border-collapse: collapse;
+  border-radius: 5px;
+  overflow: hidden;
+}
+
+td {
+  text-align: left;
+  border: 1px solid #ddd;
+  border-collapse: collapse;
+  background: white;
+  padding: 5px 20px;
+  font-size: 20px;
+}
+
+th {
+  border: 1px solid #ddd;
+  border-collapse: collapse;
+  background: #73c92d;
+  color: #f2f2f2;
+  padding: 10px 0 10px 20px;
+  font-size: 24px;
+  font-weight: lighter;
+}
