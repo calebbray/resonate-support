@@ -4,12 +4,24 @@ import { connect } from 'react-redux';
 import { logoutUser } from '../../actions/authActions';
 import PropTypes from 'prop-types';
 import logo from './brand-white.png';
-// import logo from './navbar-brand.png';
 
 class Navbar extends Component {
+  constructor(props) {
+    super(props);
+    this.state = {
+      active: false
+    };
+    this.onLogoutClick = this.onLogoutClick.bind(this);
+    this.mobileMenuActive = this.mobileMenuActive.bind(this);
+  }
+
   onLogoutClick(e) {
     this.props.logoutUser();
     e.preventDefault();
+  }
+
+  mobileMenuActive() {
+    this.setState({ active: !this.state.active });
   }
 
   render() {
@@ -49,6 +61,13 @@ class Navbar extends Component {
       </ul>
     );
 
+    const mobileLinks = (
+      <ul className="mobile text-white">
+        <li>Register</li>
+        <li>Login</li>
+      </ul>
+    );
+
     return (
       <div>
         <nav className="navbar navbar-expand-lg navbar-dark bg-primary">
@@ -57,8 +76,21 @@ class Navbar extends Component {
               <img className="logo" src={logo} alt="logo" />
             </Link>
             {isAuthenticated ? loggedInLinks : loggedOutLinks}
+            <div
+              className={
+                this.state.active ? 'mobile-menu active' : 'mobile-menu'
+              }
+              onClick={this.mobileMenuActive}
+            >
+              <div className="bar bar1" />
+              <div className="bar bar2" />
+              <div className="bar bar3" />
+            </div>
           </div>
         </nav>
+        <div className="mobile-nav bg-primary">
+          {this.state.active && mobileLinks}
+        </div>
       </div>
     );
   }

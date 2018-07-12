@@ -123,6 +123,10 @@
   margin-left: auto;
 }
 
+.mobile-menu {
+  display: none;
+}
+
 .mt-5 {
   margin-top: 3rem;
 }
@@ -194,4 +198,188 @@
 
 .secondary-content {
   background: white;
+}
+
+/************************* Mobile Menu and Media Queries ************************/
+
+.bar {
+  border-radius: 5px;
+  width: 25px;
+  height: 3px;
+  background-color: white;
+  margin: 4px 0;
+}
+
+.bar1,
+.bar2,
+.bar3 {
+  transition: 0.4s;
+}
+
+.active .bar1 {
+  /* -webkit-transform: rotate(-45deg) translate(-9px, 6px); */
+  transform: rotate(-45deg) translate(-10px, 6px);
+  /* opacity: 0; */
+}
+
+.active .bar2 {
+  opacity: 0;
+}
+
+.active .bar3 {
+  /* -webkit-transform: rotate(45deg) translate(-8px, -8px); */
+  transform: rotate(45deg) translate(-3px, 0px);
+  /* opacity: 0; */
+}
+
+.mobile-menu {
+  cursor: pointer;
+}
+
+.mobile-nav {
+  width: 25%;
+  float: right;
+  height: 100%;
+}
+
+.mobile {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+@media only screen and (min-width: 320px) and (max-width: 359px) {
+  .btn-block {
+    width: 100%;
+  }
+
+  .form-container {
+    width: 100%;
+  }
+
+  .form-control {
+    width: 96%;
+  }
+
+  .logo {
+    max-width: 89px;
+  }
+
+  .mobile-menu {
+    display: block;
+  }
+
+  .navbar-nav {
+    display: none;
+  }
+
+  .navbar-brand {
+    margin: auto;
+  }
+
+  .nav-link {
+    font-size: 16px;
+  }
+}
+
+@media only screen and (min-width: 360px) and (max-width: 374px) {
+  .btn-block {
+    width: 100%;
+  }
+
+  .form-container {
+    width: 100%;
+  }
+
+  .form-control {
+    width: 96%;
+  }
+
+  .logo {
+    max-width: 125px;
+  }
+
+  .mobile-menu {
+    display: block;
+  }
+
+  .navbar-nav {
+    display: none;
+  }
+
+  .navbar-brand {
+    margin: auto;
+  }
+
+  .nav-link {
+    font-size: 16px;
+  }
+}
+
+@media only screen and (min-width: 375px) and (max-width: 410px) {
+  .btn-block {
+    width: 100%;
+  }
+
+  .form-container {
+    width: 100%;
+  }
+
+  .form-control {
+    width: 96%;
+  }
+
+  .logo {
+    max-width: 140px;
+  }
+
+  .mobile-menu {
+    display: block;
+  }
+
+  .navbar-nav {
+    display: none;
+  }
+
+  .navbar-brand {
+    margin: auto;
+  }
+
+  .nav-link {
+    font-size: 16px;
+  }
+}
+
+@media only screen and (min-width: 411px) and (max-width: 414px) {
+  .btn-block {
+    width: 100%;
+  }
+
+  .form-container {
+    width: 100%;
+  }
+
+  .form-control {
+    width: 96%;
+  }
+
+  .logo {
+    max-width: 180px;
+  }
+
+  .mobile-menu {
+    display: block;
+  }
+
+  .navbar-nav {
+    display: none;
+  }
+
+  .navbar-brand {
+    margin: auto;
+  }
+
+  .nav-link {
+    font-size: 16px;
+  }
 }
